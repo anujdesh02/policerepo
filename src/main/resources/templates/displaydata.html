@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style  src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous">
+        /* Add your CSS here */
+        
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <!-- Add your form sections here -->
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+        <button type="button" onclick="modify()">Modify</button>
+    </form>
+    <div id="popup" style="display: none;">
+        <p>Home</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            var data = {};
+            for (var pair of formData.entries()) {
+                data[pair[0]] = pair[1];
+            }
+            localStorage.setItem('formData', JSON.stringify(data));
+        });
+
+        function modify() {
+            // Add your modification logic here
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

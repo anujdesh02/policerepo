@@ -1,0 +1,345 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      width: 80%;
+      margin: 0 auto;
+      border: 1px solid black;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      width: 20%;
+      font-weight: bold;
+    }
+
+    .form-group input, .form-group select {
+      width: 80%;
+    }
+
+    .form-group input[type="date"] {
+      width: 30%;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .buttons button {
+      width: 40%;
+      padding: 10px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Baramati Police</h1>
+  <form id="police-form">
+    <div class="form-group">
+
+
+      <label for="station">Name of Police Station:</label>
+      <select id="station" name="station" required>
+        <option value="">Select a station</option>
+        <option value="I">Additional Superintendent Of Police Office</option>
+        <option value="Baramati City Police Station">Baramati Police Station</option>
+        <option value="Baramati">Vadgaon Nimbalkar Police Station</option>
+        <option value="Daund">Police Station Bhavaninagar</option>
+        <option value="Daund">Daund Railway Police Station</option>
+	<option value="Daund">Bhigwan Road Police Station</option>
+	<option value="Daund">Police Station Bhavaninagar</option>
+	<option value="Daund">Walchandnagar Police Station</option>
+	<option value="Daund">Daund Police Station</option>
+        <!-- Add more options for other police stations -->
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="action">Preventive Action:</label>
+      <select id="action" name="action" required>
+        <option value="">Select an action</option>
+        <option value="Arrest">Maharashtra  Police Act Search 55 </option>
+       	<option value="Arrest">Maharashtra  Police Act Search 56</option>
+	<option value="Arrest">Maharashtra  Police Act Search 57</option>
+        <option value="Search">Maharashtra  Police Act Search 93</option>
+	<option value="Arrest">Maharashtra  Police Act Search 107</option>
+	<option value="Arrest">Maharashtra  Police Act Search 108</option>
+	<option value="Arrest">Maharashtra  Police Act Search 109</option>
+	<option value="Arrest">Maharashtra  Police Act Search 110</option>
+       
+
+        <!-- Add more options for other preventive actions -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date of Action:</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+
+    <div class="form-group">
+      <label for="name">Information Proposed By:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    </div>
+
+
+    <div class="form-group">
+      <label for="section">Criminal Information:</label>
+      <input type="text" id="section" name="section" placeholder="Enter the criminal section" required>
+    </div>
+
+
+   <div class="form-group">
+    <label for="section">Upload Document</label>  
+ <input type form action="upload.php" method="post" enctype="multipart/form-data">
+     </div>
+ 
+        
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload" name="submit" placeholder= Enter information about uploaded document>
+</div>
+
+
+
+<html>
+<head>
+    <style>
+        button {
+            width: 50px;
+            height: 30px;
+            font-size: 10px;
+            margin: 10px;
+        }
+        button[type="submit"] {
+            background-color: skyblue;
+
+        }
+        button[type="reset"] {
+            background-color: skyblue;
+        }
+        button[type="button"] {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+        <button type="button" onclick="alert('Modify button clicked')">Modify</button>
+    </form>
+</body>
+</html>
+
+
+
+
+  </form>
+
+  <script>
+
+    // Get the form element
+    var form = document.getElementById("police-form");
+
+    // Get the forward button element
+    var forward = document.getElementById("forward");
+
+    // Get the submit button element
+    var submit = document.getElementById("submit");
+
+    // Add a click event listener to the forward button
+    forward.addEventListener("click", function() {
+      
+      // Validate the form inputs
+      if (form.checkValidity()) {
+
+        // Get the selected station value
+        var station = form.station.value;
+
+        // Get the selected action value
+        var action = form.action.value;
+
+        // Get the date value
+        var date = form.date.value;
+
+        // Get the name value
+        var name = form.name.value;
+
+        // Get the section value
+        var section = form.section.value;
+
+        // Create an object with the form data
+        var data = {
+          station: station,
+          action: action,
+          date: date,
+          name: name,
+          section: section
+        };
+
+        // Convert the object to a JSON string
+        var json = JSON.stringify(data);
+
+        // Send the JSON string to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        
+        // Set the request method and URL
+        xhr.open("POST", "https://example.com/forward");
+
+        // Set the request header for JSON content type
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        // Set the response handler function
+        xhr.onload = function() {
+
+          // Check if the status is OK
+          if (xhr.status == 200) {
+
+            // Parse the response JSON string to an object
+            var response = JSON.parse(xhr.responseText);
+
+            // Check if the response has a success property
+            if (response.success) {
+
+              // Alert the success message
+              alert(response.message);
+
+            } else {
+
+              // Alert the error message
+              alert(response.error);
+
+            }
+
+          } else {
+
+            // Alert the status text
+            alert(xhr.statusText);
+
+          }
+        };
+
+        // Send the request with the JSON string
+        xhr.send(json);
+
+      } else {
+
+        // Alert the form is invalid
+        alert("Please fill in all the required fields.");
+
+      }
+    });
+
+    // Add a submit event listener to the form
+    form.addEventListener("submit", function(event) {
+      
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Validate the form inputs
+      if (form.checkValidity()) {
+
+        // Get the selected station value
+        var station = form.station.value;
+
+        // Get the selected action value
+        var action = form.action.value;
+
+        // Get the date value
+        var date = form.date.value;
+
+        // Get the name value
+        var name = form.name.value;
+
+        // Get the section value
+        var section = form.section.value;
+
+        // Create an object with the form data
+        var data = {
+          station: station,
+          action: action,
+          date: date,
+          name: name,
+          section: section
+        };
+
+        // Convert the object to a JSON string
+        var json = JSON.stringify(data);
+
+        // Send the JSON string to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        
+        // Set the request method and URL
+        xhr.open("POST", "https://example.com/submit");
+
+        // Set the request header for JSON content type
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        // Set the response handler function
+        xhr.onload = function() {
+
+          // Check if the status is OK
+          if (xhr.status == 200) {
+
+            // Parse the response JSON string to an object
+            var response = JSON.parse(xhr.responseText);
+
+            // Check if the response has a success property
+            if (response.success) {
+
+              // Alert the success message
+              alert(response.message);
+
+              // Reset the form inputs
+              form.reset();
+
+            } else {
+
+              // Alert the error message
+              alert(response.error);
+
+            }
+
+          } else {
+
+            // Alert the status text
+            alert(xhr.statusText);
+
+          }
+        };
+
+        // Send the request with the JSON string
+        xhr.send(json);
+
+      } else {
+
+        // Alert the form is invalid
+        alert("Please fill in all the required fields.");
+
+      } 
+    });
+  </script>
+</body>
+</html>
