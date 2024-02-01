@@ -49,9 +49,22 @@ public class UserController {
 	public String index() {
 		return "user/index";
 	}
-	@GetMapping("/changPass")
+	@GetMapping("/changPass")   
 	public String loadChnagePassword() {
 		return "user/change_password";
+	}
+	
+	@GetMapping("/crimedetails")      
+	public String crimedetails() {
+		return "user/criminaldetails";
+	}
+	@GetMapping("/c")      
+	public String c() {
+		return "user/c";
+	}
+	@GetMapping("/crime")      
+	public String crime() {
+		return "user/crime";
 	}
 	
 	@PostMapping("/updatePassword")
