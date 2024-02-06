@@ -17,8 +17,7 @@ public class PoliceTrackingApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PoliceTrackingApplication.class, args);
-		System.out.println("Vikas");
-		System.out.println("Hello");
+		System.out.println("Police");
 	}           
 
 }       

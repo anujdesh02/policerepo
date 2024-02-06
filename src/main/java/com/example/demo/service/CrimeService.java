@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,8 @@ public class CrimeService {
 	private CrimeRepository crepo;
 	
 	@Autowired
-	private CrimeDetailsRepo crimeDetails;
+	private CrimeDetailsRepo crimeDetails;  
+	
 	
 //	public void save(crimeDetails c)
 //	{
@@ -37,4 +40,10 @@ public class CrimeService {
 	{
 		crimeDetails.save(crime);
 	}
+
+	
+//	public List<crimeDetails> getAadharDataByAadharNumber(String aadhar) {
+//        return crepo.findByAadharNumber(aadhar);
+//    }
+	
 }

@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,11 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Crime;
 import com.example.demo.model.UserDtls;
+import com.example.demo.model.crimeDetails;
+import com.example.demo.repository.CrimeDetailsRepo;
+import com.example.demo.repository.CrimeRepository;
 import com.example.demo.repository.UserRepository;
 
 import net.bytebuddy.utility.RandomString;
@@ -24,6 +31,12 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	private CrimeDetailsRepo crimeRepo;
+	
+	@Autowired
+	private CrimeRepository crimeRepo2;
 
 	@Override
 	public UserDtls createUser(UserDtls user, String url) {
@@ -90,4 +103,61 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Crime> findAllArticles() {
+		return (List<Crime>) crimeRepo.findAllEagerBy();
+	}
+
+	@Override
+	public List<crimeDetails> findAllCrime(){
+		return (List<crimeDetails>) crimeRepo2.findAllEagerBy();
+	}
+
+	@Override
+	public Crime findArticleById(Long id) {
+		
+		Optional<Crime> opt = crimeRepo.findById(id);
+		return opt.get();
+		
+	}
+
+	@Override
+	public Crime saveArticle(Crime newArticle) {
+		// TODO Auto-generated method stub
+		return crimeRepo.save(newArticle);
+	}
+
+	@Override
+	public void deleteArticleById(Long id) {
+		crimeRepo.deleteById(id);
+		
+	}
+
+	@Override
+	public crimeDetails saveArticle1(crimeDetails newArticle) {
+		
+		return crimeRepo2.save(newArticle);
+	}
+
+	@Override
+	public crimeDetails findArticleById1(long id) {
+		
+		Optional<crimeDetails> opt = crimeRepo2.findById(id);
+		return opt.get();
+	}
+
+	@Override
+	public void deleteArticleById1(long id) {
+		crimeRepo2.deleteById(id);
+		
+	}
+
+//	@Override
+//	public crimeDetails getAadharDataByAadharNumber(String aadhar) {
+//      return crimeRepo2.findByAadharNumber(aadhar);
+//  }
+	
+	
+	
 }
