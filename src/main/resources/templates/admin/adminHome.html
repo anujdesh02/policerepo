@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/header :: common-header"></head>
+
+<body class="d-flex flex-column">
+	<div th:fragment="navbarAdmin">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
+			<a class="navbar-brand" th:href="@{/}">ADMIN PORTAL</a> <button class="navbar-toggler" type="button"
+				data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown">
+						<!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> List </a>-->
+						<!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/admin/article-list}">Criminal List</a>
+							<a class="dropdown-item" th:href="@{/admin/criminal-list}">Criminal Details</a>
+
+						</div>-->
+
+						<a class="dropdown-item" th:href="@{/admin/article-list}" style="color: aliceblue;"> Criminal
+							List</a>
+
+					</li>
+					<li>
+						<a class="dropdown-item" th:href="@{/admin/criminal-list}" style="color: aliceblue;">Criminal
+							Details</a>
+
+					</li>
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					<!--<li class="nav-item">
+						<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/}"> BACK TO STORE </a>
+					</li>-->
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> LOG OUT </a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+	<div th:replace="common/header :: body-scripts"> </div>
+
+
+
+	<h1>Admin Home Page</h1>
+
+
+	<!-- Footer Start -->
+	<div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+		<div class="row pt-5">
+			<div class="col-lg-4 col-md-12 mb-5">
+				<h1 class="mb-3 display-5 text-capitalize font-italic text-white"><span
+						class="text-primary">Safety</span>First</h1>
+				<p class="m-0">Our major responsibility is to protect public order. At the district level, the IPS
+					prioritises maintaining peace and order, which is a shared responsibility of IPS and IAS officers;
+					detecting and preventing crime; and traffic control, drug prevention, accident prevention and
+					management among other things.</p>
+			</div>
+			<div class="col-lg-8 col-md-12">
+				<div class="row">
+					<div class="col-md-4 mb-5">
+						<h5 class="text-primary mb-4">Quick Links</h5>
+						<div class="d-flex flex-column justify-content-start">
+							<a class="text-white mb-2" href="index"><i class="fa fa-angle-right mr-2"></i>Home</a>
+							<a class="text-white mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our
+								Services</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
+							<a class="text-white" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+						</div>
+					</div>
+					<div class="col-md-4 mb-5">
+						<h5 class="text-primary mb-4">Popular Links</h5>
+						<div class="d-flex flex-column justify-content-start">
+							<a class="text-white mb-2" href="index"><i class="fa fa-angle-right mr-2"></i>Home</a>
+							<a class="text-white mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our
+								Services</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
+							<a class="text-white" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+						</div>
+					</div>
+					<div class="col-md-4 mb-5">
+						<h5 class="text-primary mb-4">Get In Touch</h5>
+						<p><i class="fa fa-map-marker-alt mr-2"></i>Maharashtra</p>
+						<p><i class="fa fa-phone-alt mr-2"></i>+100</p>
+						<p><i class="fa fa-envelope mr-2"></i>College@example.com</p>
+						<div class="d-flex justify-content-start mt-4">
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row pt-3">
+			<!--<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+				<p class="m-0 text-white">
+					&copy; <a class="text-white font-weight-bold" href="#">PhoenixZone Site Name</a>. All Rights Reserved.
+					Designed by
+					<a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+				</p>
+			</div>-->
+			<div class="col-md-6 text-center text-md-right">
+				<ul class="nav d-inline-flex">
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">Privacy</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">Terms</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">FAQs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">Help</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- Footer End -->
+
+
+
+</body>
+
+</html>

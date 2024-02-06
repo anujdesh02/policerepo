@@ -2,22 +2,30 @@ package com.example.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "crime_data")
+
 public class Crime {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne
-	@JoinColumn(name = "criminalId")
-	private crimeDetails criminalId11;
+//	@ManyToOne
+//	@JoinColumn(name = "criminalId")
+	
+	  @ManyToOne
+	   @JoinColumn(name = "criminalId")
+	private crimeDetails criminalId;
 	
 	@Column
 	private String crimeType;
@@ -32,7 +40,7 @@ public class Crime {
 			String crimeStatus, String forwardTo, String conclusion, String addedBy) {
 		super();
 		this.id = id;
-		this.criminalId11 = criminalId11;
+		this.criminalId = criminalId11;
 		this.crimeType = crimeType;
 		this.section = section;
 		this.lastUpdate = lastUpdate;
@@ -52,10 +60,10 @@ public class Crime {
 		this.id = id;
 	}
 	public crimeDetails getCriminalId11() {
-		return criminalId11;
+		return criminalId;
 	}
 	public void setCriminalId11(crimeDetails criminalId11) {
-		this.criminalId11 = criminalId11;
+		this.criminalId = criminalId11;
 	}
 	public String getCrimeType() {
 		return crimeType;

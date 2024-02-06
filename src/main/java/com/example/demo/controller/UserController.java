@@ -1,10 +1,16 @@
 package com.example.demo.controller;
 
+import java.io.Console;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.UserDtls;
+import com.example.demo.model.crimeDetails;
+import com.example.demo.repository.CrimeRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.CrimeService;
+import com.example.demo.service.UserServiceImpl;
 
 
 @Controller
@@ -27,6 +37,16 @@ public class UserController {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncode;
+	
+	@Autowired
+	private CrimeRepository crimeDetailsRepo;
+	
+	
+	@Autowired
+	private CrimeService crimeDetails;
+	
+	@Autowired
+	private UserServiceImpl UserServiceImpll;
 
 	@ModelAttribute
 	private void userDetails(Model m, Principal p) {
@@ -85,7 +105,7 @@ public class UserController {
 			{
 				session.setAttribute("msg", "Password Change Success");
 			}
-			else
+			else 
 			{
 				session.setAttribute("msg", "Something Went Wrong On Server");
 			}
@@ -97,4 +117,73 @@ public class UserController {
 		
 		return "redirect:/user/changPass";
 	}
+	
+	
+	@GetMapping("/search")
+	public String searchBar() {
+		return "user/searchbar";
+	}  
+	
+//	@PostMapping("/search")
+//	public List<crimeDetails> getUserByUsername(String aadharNumber)
+//	{
+//		System.out.println("Adhar : "+aadharNumber);
+//		
+//		List<crimeDetails> a= crimeDetailsRepo.findByUsername(aadharNumber);
+////		System.out.println(c.getAadhar()+a);
+//	  List<crimeDetails> cr=crimeDetailsRepo.findByUsername(aadharNumber);
+//	   System.out.println(".................."+aadharNumber);
+//	  
+//		System.out.println("Data : " + a);
+//		
+//		return a; 
+//		 
+//	}
+	
+	
+
+//    @GetMapping("/getAadharData")
+//    public crimeDetails getAadharData(@RequestParam String aadhar) {
+//    	crimeDetails aadharData = UserServiceImpll.getAadharDataByAadharNumber(aadhar);
+//        if (aadharData != null) {
+//            return aadharData;
+//        } else {
+//            return aadharData;
+//        }
+//    }
+	
+	@PostMapping("/getAadharData")
+	public String getAllData(crimeDetails c, @RequestParam String aadhar)
+	{
+		List<crimeDetails> a=crimeDetailsRepo.findAll();
+		
+		System.out.println("Data : "+a);
+		
+		System.out.println("Adhar no : " + aadhar);
+
+
+		List<String> aadharNumbers = new ArrayList<>();
+
+		for (crimeDetails crimeDetail : a) {
+		    aadharNumbers.add(crimeDetail.getAadhar());
+		}
+		
+		System.out.println("Adhar Card Number : "+aadharNumbers);
+		
+		if (aadharNumbers.contains(aadhar)) {
+			
+             return "user/showDataCriminal";
+		}
+		else    
+		{
+			
+			return "user/c";
+		}
+		
+
+		//return "user/c"; 
+	}
+	
+	
+	
 }
