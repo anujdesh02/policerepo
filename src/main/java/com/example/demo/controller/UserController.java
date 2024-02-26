@@ -69,6 +69,10 @@ public class UserController {
 	public String index() {
 		return "user/index";
 	}
+	
+	
+
+	
 	@GetMapping("/changPass")   
 	public String loadChnagePassword() {
 		return "user/change_password";
@@ -78,13 +82,18 @@ public class UserController {
 	public String crimedetails() {
 		return "user/criminaldetails";
 	}
-	@GetMapping("/c")      
-	public String c() {
-		return "user/c";
-	}
+//	@GetMapping("/c")      
+//	public String c() {
+//		return "user/c";
+//	}
 	@GetMapping("/crime")      
 	public String crime() {
 		return "user/crime";
+	}
+	
+	@GetMapping("/about")      
+	public String about() {
+		return "user/about";
 	}
 	
 	@PostMapping("/updatePassword")
@@ -185,5 +194,32 @@ public class UserController {
 	}
 	
 	
+//	@GetMapping("/c")
+//	public String criminalForm(Model model) {
+//		
+//		model.addAttribute("user", new crimeDetails());
+//		return "redirect:criminalForm";
+//	}  
+	
+	@GetMapping("/demo")
+	public String showForm(Model model) {
+		model.addAttribute("user", new crimeDetails());
+		System.out.println("123");
+		return "user/demo";
+	}
+
+	@GetMapping("/c")
+	public String criminalForm() {
+		
+		return "user/demo";
+	}  
+	
+	@GetMapping("/showData")
+	public String ShowData(Model model) {
+		model.addAttribute("user", new crimeDetails());
+		System.out.println("456");
+
+		return "user/showData";
+	}
 	
 }

@@ -18,7 +18,5 @@ public class PoliceTrackingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PoliceTrackingApplication.class, args);
 		System.out.println("Police");
-	}           
-
-}       
-        
+	}  
+}   
