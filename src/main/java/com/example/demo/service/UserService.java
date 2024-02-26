@@ -31,6 +31,8 @@ public interface UserService {
 	crimeDetails findArticleById1(long id);
 
 	void deleteArticleById1(long id);
+
+	public void saveUser(crimeDetails parent);
 	
 //	public crimeDetails getAadharDataByAadharNumber(String aadhar);
 	

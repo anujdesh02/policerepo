@@ -61,6 +61,12 @@ public class HomeController {
 	public String register() {
 		return "register";
 	}
+	
+	@GetMapping("/about")
+	public String about() {
+		return "about";
+	}
+
 
 	@PostMapping("/createUser")
 	public String createuser(@ModelAttribute UserDtls user, HttpSession session,HttpServletRequest request) {

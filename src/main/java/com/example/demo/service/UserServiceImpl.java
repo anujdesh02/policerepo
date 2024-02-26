@@ -153,6 +153,13 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public void saveUser(crimeDetails parent) {
+		
+		crimeRepo2.save(parent);
+		
+	}
+
 //	@Override
 //	public crimeDetails getAadharDataByAadharNumber(String aadhar) {
 //      return crimeRepo2.findByAadharNumber(aadhar);

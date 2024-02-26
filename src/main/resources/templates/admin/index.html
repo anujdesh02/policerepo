@@ -92,7 +92,7 @@
 					
 						<div>
 
-					<a href="user"> <img class="" th:src="@{/img/1.png}" height="50px"></a>
+					<a href="admin"> <img class="" th:src="@{/img/1.png}" height="50px"></a>
 
 					
 				</div>
@@ -116,17 +116,13 @@
 			<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 				<div class="navbar-nav m-auto py-4">
 
-					<a href="/user/index" class="nav-item nav-link active">Home</a>
-					<a href="/user/about" class="nav-item nav-link"> Maharashtra Police</a>
+					<a href="/admin/index" class="nav-item nav-link active">Home</a>
+					<a href="/admin/about" class="nav-item nav-link"> Maharashtra Police</a>
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
 						<div class="dropdown-menu text-capitalize">
-							<!--<a href="crime" class="dropdown-item">Crime Detail</a>
-							<a href="c" class="dropdown-item">Criminal Detail</a>-->
-							
-							<a href="/user/c" class="dropdown-item">Crime Detail</a>
-							<a href="/user/showData" class="dropdown-item">Exist Criminal</a>
-							
+							<a href="/admin/criminal-list" class="dropdown-item">Criminal Detail</a>
+							<a href="/admin/article-list" class="dropdown-item">Crime Detail</a>
 						</div>
 					</div>
 					<!--<div class="nav-item dropdown">
