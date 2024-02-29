@@ -1,0 +1,167 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Criminal Crime Details</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-image: linear-gradient(to bottom right, #f0f0f0, #c9c9c9);
+			/* Background gradient effect */
+			height: 100vh;
+			margin: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container {
+			max-width: 600px;
+			background-color: rgba(255, 255, 255, 0.9);
+			/* Semi-transparent white background */
+			padding: 30px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			/* Box shadow for form */
+		}
+	</style>
+</head>
+
+<section>
+
+	<body>
+
+		<div class="container">
+			<h2 class="text-center mb-4">Criminal Crime Details</h2>
+			<form id="crimeForm" class="needs-validation" novalidate action="/savecrimeDetails" method="post">
+
+				<!--<div class="form-group">
+					<label for="crimeType">Crime id :</label>
+					<textarea class="form-control" name="criminalId11" id="criminalId11" rows="3" required></textarea>
+					<div class="invalid-feedback">Please enter criminal id.</div>
+				</div>-->
+				<div class="form-group">
+					<label for="section">Section:</label>
+					<select class="form-control" name="section" id="section" required>
+						<option value="">Select Section</option>
+						<option value="MaharashtraPoliceActSection55"> Maharashtra Police Act Section 55</option>
+						<option value="MaharashtraPoliceActSection56"> Maharashtra Police Act Section 56</option>
+						<option value="MaharashtraPoliceActSection56"> Maharashtra Police Act Section 57</option>
+						<option value="MaharashtraPoliceActSection93"> Maharashtra Police Act Section 93</option>
+						<option value="MaharashtraPoliceActSection107">Maharashtra Police Act Section 107</option>
+						<option value="MaharashtraPoliceActSection108">Maharashtra Police Act Section 108</option>
+						<option value="MaharashtraPoliceActSection109">Maharashtra Police Act Section 109</option>
+						<option value="MaharashtraPoliceActSection110">Maharashtra Police Act Section 110</option>
+
+					</select>
+					<div class="invalid-feedback">Please select a section.</div>
+				</div>
+				<div class="form-group">
+					<label for="crimeType">Crime Report Type:</label>
+					<textarea class="form-control" name="crimeType" id="crimeType" rows="3" required></textarea>
+					<div class="invalid-feedback">Please enter crime details.</div>
+				</div>
+				<!--<div class="form-group">
+					<label for="currentDate">Current Date:</label>
+					<input type="hidden" form-control" name="currentDate" id="currentDate" readonly required>
+				</div>-->
+				<div class="form-group">
+					<label for="lastUpdate">Last Update:</label>
+					<input type="hidden" class="form-control" name="lastUpdate" id="lastUpdate" readonly required>
+				</div>
+				<div class="form-group">
+					<label>Crime Status:</label><br>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="crimeStatus" id="crimeStatus" value="pending"
+							required>
+						<label class="form-check-label" for="pending">Pending</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="crimeStatus" id="crimeStatus" value="comp"
+							required>
+						<label class="form-check-label" for="comp">Comp</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="crimeStatus" id="crimeStatus" value="other"
+							required>
+						<label class="form-check-label" for="other">Other</label>
+					</div>
+					<div class="invalid-feedback">Please select a crime status.</div>
+				</div>
+				<div class="form-group">
+					<label for="forwardedTo">Forwarded To:</label>
+					<select class="form-control" name="forwardTo" id="forwardTo" required>
+						<option value="">Select Forwarded To</option>
+						<option value="">Select Forwarded To</option>
+						<option value="ASP">Additional Superintendent Of Police Office</option>
+						<option value="BaramatiCityPoliceStation">Baramati Police Station</option>
+						<option value="VadgaonNimbalkarPoliceStation">Vadgaon Nimbalkar Police Station</option>
+						<option value="PoliceStationBhavaninagar">Police Station Bhavaninagar</option>
+						<option value="DaundRailwayPoliceStation">Daund Railway Police Station</option>
+						<option value="BhigwanRoadPoliceStation">Bhigwan Road Police Station</option>
+						<option value="PoliceStationBhavaninagar">Police Station Bhavaninagar</option>
+						<option value="WalchandnagarPoliceStation">Walchandnagar Police Station</option>
+						<option value="DaundPoliceStation">Daund Police Station</option>
+					</select>
+					<div class="invalid-feedback">Please select who the report is forwarded to.</div>
+				</div>
+				<div class="form-group">
+					<label for="conclusion">Conclusion:</label>
+					<textarea class="form-control" name="conclusion" id="conclusion" rows="3"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="addedBy">Added By:</label>
+					<input type="text" class="form-control" name="addedBy" id="addedBy" required>
+					<div class="invalid-feedback">Please enter who added the report.</div>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary mr-3">Submit</button>
+					<button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+				</div>
+			</form>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				// Autofill current date and time
+				var currentDateTime = new Date().toLocaleString();
+				$('#currentDate').val(currentDateTime);
+				$('#lastUpdate').val(currentDateTime);
+
+				// Form submission
+				$('#crimeForm').submit(function (e) {
+					if (this.checkValidity() === false) {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+					this.classList.add('was-validated');
+				});
+			});
+
+			function clearForm() {
+				document.getElementById("crimeForm").reset();
+			}
+		</script>
+
+	</body>
+</section>
+
+</html>

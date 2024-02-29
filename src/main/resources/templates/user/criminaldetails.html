@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Criminal Form</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<style>
+		body {
+			background-color: #f8f9fa;
+			padding-top: 60px;
+			/* Adjust the top padding to fix the navbar */
+
+
+			padding: 25px;
+		}
+
+		.title {
+			color: #5C6AC4;
+		}
+
+
+
+		.user-form {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<section>
+<body>
+
+	<!-- Navbar -->
+	<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Maharashtra Police</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>-->
+
+	<!-- User Form Section -->
+	<div class="container mt-4 user-form">
+		<h2>Criminal Form</h2>
+		<form id="userForm" action="savecrime" method="post">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" name="name" required>
+			</div>
+			<div class="form-group">
+				<label for="aadhar">Aadhar</label>
+				<input type="number" class="form-control" id="aadhar" name="aadhar" pattern="\d{12}" required>
+				<small class="form-text text-muted">Enter 12-digit Aadhar number.</small>
+			</div>
+			<div class="form-group">
+				<label for="pan">PAN</label>
+				<input type="text" class="form-control" id="pan" name="pan" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required>
+				<small class="form-text text-muted">Enter valid PAN number (e.g., ABCDE1234F).</small>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="mobile">Mobile</label>
+				<input type="number" class="form-control" id="mobile" name="mobile" pattern="\d{10}" required>
+				<small class="form-text text-muted">Enter 10-digit mobile number.</small>
+			</div>
+			<div class="form-group">
+				<label for="status">Status</label>
+				<select class="form-control" id="status" name="status" required>
+					<option value="active">Active</option>
+					<option value="pending">Pending</option>
+				</select>
+			</div><br>
+			<center><button type="submit" class="btn btn-primary">Submit</button></center>
+		</form>
+	</div>
+
+	<!-- Bootstrap JS and Popper.js -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- Custom JavaScript for form validation -->
+	<script>
+		document.getElementById('userForm').addEventListener('submit', function (event) {
+			var aadharInput = document.getElementById('aadhar');
+			if (!isValidAadhar(aadharInput.value)) {
+				alert('Invalid Aadhar number. Please enter a 12-digit Aadhar number.');
+				event.preventDefault();
+			}
+
+			var panInput = document.getElementById('pan');
+			if (!isValidPAN(panInput.value)) {
+				alert('Invalid PAN number. Please enter a valid PAN number (e.g., ABCDE1234F).');
+				event.preventDefault();
+			}
+
+			var mobileInput = document.getElementById('mobile');
+			if (!isValidMobile(mobileInput.value)) {
+				alert('Invalid mobile number. Please enter a 10-digit mobile number.');
+				event.preventDefault();
+			}
+		});
+
+		function isValidAadhar(aadhar) {
+			return /^\d{12}$/.test(aadhar);
+		}
+
+		function isValidPAN(pan) {
+			return /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(pan);
+		}
+
+		function isValidMobile(mobile) {
+			return /^\d{10}$/.test(mobile);
+		}
+	</script>
+	<script>
+		function showTime() {
+			document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+		}
+		showTime();
+		setInterval(function () {
+			showTime();
+		}, 1000);
+	</script>
+
+</body>
+</section>
+
+</html>

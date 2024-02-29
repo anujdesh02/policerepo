@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+
+	<div th:replace="admin/adminHome :: navbarAdmin"> </div>
+	<br><br><br>
+
+	<div class="container page-content">
+		<form th:action="@{/admin/edit}" method="post" enctype="multipart/form-data">
+			<fieldset>
+				<legend class="center-block">
+					Edit Crime Information
+				</legend>
+
+				<input hidden="hidden" name="id" th:value="${article.id}">
+
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">Crime Type</label>
+					<div class="col-6">
+						<input th:value="${article.crimeType}" type="text" class="form-control" id="crimeType"
+							name="crimeType">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">Section</label>
+					<div class="col-6">
+						<input th:value="${article.section}" type="text" class="form-control" id="section"
+							name="section">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">Update</label>
+					<div class="col-6">
+						<input th:value="${article.lastUpdate}" type="text" class="form-control" id="lastUpdate"
+							name="lastUpdate" readonly>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">Crime Status</label>
+					<div class="col-6">
+						<input th:value="${article.crimeStatus}" type="text" class="form-control" id="crimeStatus"
+							name="crimeStatus">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">AddedBy</label>
+					<div class="col-6">
+						<input th:value="${article.addedBy}" type="text" class="form-control" id="addedBy"
+							name="addedBy">
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">Forward To</label>
+					<div class="col-6">
+						<input th:value="${article.forwardTo}" type="text" class="form-control" id="forwardTo"
+							name="forwardTo">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="title" class="col-2 col-form-label text-right">Conclusion</label>
+					<div class="col-6">
+						<input th:value="${article.conclusion}" type="text" class="form-control" id="conclusion"
+							name="conclusion">
+					</div>
+				</div>
+
+				
+
+				<!--	<div class="form-group row">
+					<label for="category" class="col-2 col-form-label text-right">Category</label>
+					<div class="col-6">
+						<input type="text" class="form-control" id="categories" name="category" data-role="tagsinput"
+							th:value="${preselectedCategories}">
+					</div>
+					<div class="col-4">
+						<button type=button
+							class="btn btn-primary btn-category badge badge-pill badge-primary mr-1 mb-1"
+							th:each="item : ${allCategories}" th:text="${item}" th:id="item+${category}"></button>
+					</div>
+				</div>-->
+				<!--	<div class="form-group row">
+					<label for="brand" class="col-2 col-form-label text-right">Sizes</label>
+					<div class="col-6">
+						<input type="text" class="form-control" id="sizes" name="size" data-role="tagsinput"
+							th:value="${preselectedSizes}">
+					</div>
+					<div class="col-4">
+						<button type=button class="btn btn-primary btn-size" th:each="item : ${#lists.sort(allSizes)}"
+							th:text="${item}" th:id="size+${item}"></button>
+					</div>
+				</div>-->
+				<!--<div class="form-group row">
+					<label for="brand" class="col-2 col-form-label text-right">Brand</label>
+					<div class="col-6">
+						<input type="text" class="form-control" id="brands" name="brand" data-role="tagsinput"
+							th:value="${preselectedBrands}">
+					</div>
+					<div class="col-4">
+						<button type=button class="btn btn-primary btn-brand badge badge-pill badge-primary mr-1 mb-1"
+							th:each="item : ${allBrands}" th:text="${#strings.capitalize(item)}"
+							th:id="brand+${item}"></button>
+					</div>
+				</div>-->
+
+				<!--<div class="form-group row">
+					<label for="price" class="col-2 col-form-label text-right">Price</label>
+					<div class="col-6 input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">$</span>
+						</div>
+						<input th:value="${article.price}" type="number" name="price" step="0.1" class="form-control"
+							id="price" placeholder="List Price" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="stock" class="col-2 col-form-label text-right">Available stock</label>
+					<div class="col-6">
+						<input th:value="${article.stock}" type="number" name="stock" class="form-control" id="stock"
+							placeholder="Number of in-stock" />
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+					<label for="picture" class="col-2 col-form-label text-right">Article image link</label>
+					<div class="col-6">
+						<input th:value="${article.picture}" type="text" class="form-control" id="picture"
+							name="picture">
+					</div>
+				</div>-->
+
+				<div class="form-group row">
+					<div class="offset-2 col-6">
+						<button type="submit" class="btn btn-success">Update Article</button>
+						<a class="btn btn-danger" th:href="@{/admin/}">Cancel</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+
+
+	<!-- Footer Start -->
+	<div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+		<div class="row pt-5">
+			<div class="col-lg-4 col-md-12 mb-5">
+				<h1 class="mb-3 display-5 text-capitalize font-italic text-white"><span
+						class="text-primary">Safety</span>First</h1>
+				<p class="m-0">Our major responsibility is to protect public order. At the district level, the IPS
+					prioritises maintaining peace and order, which is a shared responsibility of IPS and IAS officers;
+					detecting and preventing crime; and traffic control, drug prevention, accident prevention and
+					management among other things.</p>
+			</div>
+			<div class="col-lg-8 col-md-12">
+				<div class="row">
+					<div class="col-md-4 mb-5">
+						<h5 class="text-primary mb-4">Quick Links</h5>
+						<div class="d-flex flex-column justify-content-start">
+							<a class="text-white mb-2" href="index"><i class="fa fa-angle-right mr-2"></i>Home</a>
+							<a class="text-white mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our
+								Services</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
+							<a class="text-white" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+						</div>
+					</div>
+					<div class="col-md-4 mb-5">
+						<h5 class="text-primary mb-4">Popular Links</h5>
+						<div class="d-flex flex-column justify-content-start">
+							<a class="text-white mb-2" href="index"><i class="fa fa-angle-right mr-2"></i>Home</a>
+							<a class="text-white mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our
+								Services</a>
+							<a class="text-white mb-2" href="service"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
+							<a class="text-white" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+						</div>
+					</div>
+					<div class="col-md-4 mb-5">
+						<h5 class="text-primary mb-4">Get In Touch</h5>
+						<p><i class="fa fa-map-marker-alt mr-2"></i>Maharashtra</p>
+						<p><i class="fa fa-phone-alt mr-2"></i>+100</p>
+						<p><i class="fa fa-envelope mr-2"></i>College@example.com</p>
+						<div class="d-flex justify-content-start mt-4">
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+							<a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+								style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row pt-3">
+			<!--<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+				<p class="m-0 text-white">
+					&copy; <a class="text-white font-weight-bold" href="#">PhoenixZone Site Name</a>. All Rights Reserved.
+					Designed by
+					<a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+				</p>
+			</div>-->
+			<div class="col-md-6 text-center text-md-right">
+				<ul class="nav d-inline-flex">
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">Privacy</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">Terms</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">FAQs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white py-0" href="contact">Help</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- Footer End -->
+
+
+	<div th:replace="common/header :: body-scripts"> </div>
+	<script src="/js/tagsinput-custom.js"></script>
+
+
+</body>
+
+</html>
